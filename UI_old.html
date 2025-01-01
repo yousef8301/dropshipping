@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dropshipping Website</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: black;
+            color: white;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .search-bar {
+            background-color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+        }
+
+        .product img {
+            width: 50%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .shopping-cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .shopping-cart .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item span:first-child {
+            margin-right: auto;
+        }
+
+        .cart-item button {
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .clear-cart-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            align-self: flex-end;
+        }
+
+        .toggle-cart-button {
+            background-color: beige;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        
+        .image-carousel {
+            position: relative;
+            width: 150px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .image-carousel img {
+            width: 150px; 
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            z-index: 1;
+        }
+
+        .carousel-btn.left {
+            left: -25px;
+        }
+
+        .carousel-btn.right {
+            right: -25px;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    </style> -->
+</head>
+<body>
+    <div class="header">
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search for products...">
+        <button class="toggle-cart-button" onclick="toggleCart()">Shopping Cart</button>
+    </div>
+
+    <div class="products" id="productsContainer">
+        <div class="product" data-name="Midea Fridge" onclick="window.location.href='midea_fridge.html'">
+            <img src="images/fridge inside.jpg" alt="Fridge">
+            <h3>Midea Fridge</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Midea Fridge', 50); event.stopPropagation();">Add to Cart</button>
+        </div>
+        
+        <!-- <div class="product" data-name="Product 1">
+            <img src="images/fridge inside.jpg" alt="Fridge">
+            <h3>Product 1</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Product 1', 50)">Add to Cart</button>
+        </div> -->
+        <div class="product" data-name="Product 2">
+            <h3>Product 2</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Product 2', 50)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 3">
+            <h3>Product 3</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Product 3', 50)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 4">
+            <h3>Product 4</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Product 4', 50)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 5">
+            <h3>Product 5</h3>
+            <p>$50</p>
+            <button onclick="addToCart('Product 5', 50)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="shopping-cart" id="shoppingCart">
+        <button class="close-btn" onclick="closeCart()">&times;</button>
+        <h3>Shopping Cart</h3>
+        <div id="cartItems"></div>
+        <p class="total" id="totalPrice">Total: $0</p>
+        <p id="totalItems">Items: 0</p>
+        <button class="clear-cart-button" onclick="clearCart()">Clear All</button>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const totalPrice = document.getElementById('totalPrice');
+            const totalItems = document.getElementById('totalItems');
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `<span>${index + 1}. ${item.name}</span><span>$${item.price}</span><button onclick="removeFromCart(${index})">&times;</button>`;
+                cartItems.appendChild(cartItem);
+                total += item.price;
+            });
+
+            totalPrice.textContent = `Total: $${total}`;
+            totalItems.textContent = `Items: ${cart.length}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart.length = 0;
+            updateCart();
+        }
+
+        function toggleCart() {
+            const shoppingCart = document.getElementById('shoppingCart');
+            shoppingCart.style.display = shoppingCart.style.display === 'none' || shoppingCart.style.display === '' ? 'block' : 'none';
+        }
+
+        function closeCart() {
+            const shoppingCart = document.getElementById('shoppingCart');
+            shoppingCart.style.display = 'none';
+        }
+
+        document.getElementById('searchBar').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const name = product.getAttribute('data-name').toLowerCase();
+                product.style.display = name.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
