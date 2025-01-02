@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="header">
+        <img src="images/logo.png" alt="Logo" class="logo" onclick="window.location.href='UI.html'">
         <input type="text" id="searchBar" class="search-bar" placeholder="Search for products...">
         <button class="toggle-cart-button" onclick="toggleCart()">Shopping Cart</button>
     </div>
@@ -50,54 +51,10 @@
         <button class="clear-cart-button" onclick="clearCart()">Clear All</button>
     </div>
 
+    
+    <script src="shopping_cart.js" defer></script>
+
     <script>
-        const cart = [];
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const totalPrice = document.getElementById('totalPrice');
-            const totalItems = document.getElementById('totalItems');
-
-            cartItems.innerHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `<span>${index + 1}. ${item.name}</span><span>$${item.price}</span><button onclick="removeFromCart(${index})">&times;</button>`;
-                cartItems.appendChild(cartItem);
-                total += item.price;
-            });
-
-            totalPrice.textContent = `Total: $${total}`;
-            totalItems.textContent = `Items: ${cart.length}`;
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        function clearCart() {
-            cart.length = 0;
-            updateCart();
-        }
-
-        function toggleCart() {
-            const shoppingCart = document.getElementById('shoppingCart');
-            shoppingCart.style.display = shoppingCart.style.display === 'none' || shoppingCart.style.display === '' ? 'block' : 'none';
-        }
-
-        function closeCart() {
-            const shoppingCart = document.getElementById('shoppingCart');
-            shoppingCart.style.display = 'none';
-        }
-
         document.getElementById('searchBar').addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             const products = document.querySelectorAll('.product');

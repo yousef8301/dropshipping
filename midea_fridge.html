@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
-    
-    <script src="carousel.js" defer></script>
+    <title>Midea Fridge - Product Details</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="carousel.js" defer></script>
+    <script src="shopping_cart.js" defer></script>
+
+    <style>
+        .product-details {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .product-images {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .product-text {
+            flex: 2;
+            text-align: left;
+        }
+
+        .product-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 
 </head>
 <body>
+    <div class="header">
+        <img src="images/logo.png" alt="Logo" class="logo" onclick="window.location.href='UI.html'">
+        <h1>Midea Fridge - Product Details</h1>
+        <button class="toggle-cart-button" onclick="toggleCart()">Shopping Cart</button>
+    </div>
+
     <div class="product-details">
-        <div class="image-carousel">
-            <button class="carousel-btn left" onclick="prevImage()">&#10094;</button>
-            <img id="carouselImage" src="images/fridge inside.jpg" alt="Fridge">
-            <button class="carousel-btn right" onclick="nextImage()">&#10095;</button>
+        <div class="product-images">
+            <div class="image-carousel">
+                <button class="carousel-btn left" onclick="prevImage()">&#8249;</button>
+                <img id="carouselImage" src="images/fridge inside.jpg" alt="Midea Fridge">
+                <button class="carousel-btn right" onclick="nextImage()">&#8250;</button>
+            </div>
         </div>
-        <h1>Midea Fridge</h1>
-        <p>$50</p>
+
+        <div class="product-text">
+            <h2>Midea Fridge</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula placerat augue, in dictum ex scelerisque a. Quisque non sem at metus varius pharetra eget vel justo.</p>
+            <p>Price: $50</p>
+            <button onclick="addToCart('Midea Fridge', 50);">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="shopping-cart" id="shoppingCart">
+        <button class="close-btn" onclick="closeCart()">&times;</button>
+        <h3>Shopping Cart</h3>
+        <div id="cartItems"></div>
+        <p class="total" id="totalPrice">Total: $0</p>
+        <p id="totalItems">Items: 0</p>
+        <button class="clear-cart-button" onclick="clearCart()">Clear All</button>
     </div>
 </body>
-</html> 
-
+</html>
